@@ -1,6 +1,27 @@
-#TODO -- put this into the main file
+#!/usr/bin/env python
+"""
+Handlers for maintaining our email database.
 
-class EmailListActionHandler(BaseRequestHandler):
+We use the webapp.py WSGI framework to handle CGI requests, using the
+wsgiref module to wrap the webapp.py WSGI application in a CGI-compatible
+container. See webapp.py for documentation on RequestHandlers and the URL
+mapping at the bottom of this module.  
+
+"""
+
+from google.appengine.ext import db
+
+from django.utils import simplejson
+from django.http import HttpResponse
+
+# Data models
+import models
+
+# Simple web handlers
+import webpagehandlers
+
+
+class EmailListActionHandler(webpagehandlers.BaseRequestHandler):
   """
   Processes an email list addition request.
 
@@ -65,7 +86,7 @@ Cheers,
           })
 
 
-class ConfirmNewsletterActionHandler(BaseRequestHandler):
+class ConfirmNewsletterActionHandler(webpagehandlers.BaseRequestHandler):
   """
   Processes an confirm Newsletter request.
 
@@ -106,11 +127,6 @@ class OptOutEmailActionHandler(webpagehandlers.BaseRequestHandler):
       entry.put()
       
     self.redirect('/optout') #TODO: Replace with the proper page.
-
-#TODO: Move these mappings of URI to the correct location in the main file
-   ('/newslettersubmit.do', EmailListActionHandler),
-   ('/confirmnewsletter.do', ConfirmNewsletterActionHandler),   
-   ('/optout.do', OptOutEmailActionHandler),
 
 
 
