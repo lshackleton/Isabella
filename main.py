@@ -71,9 +71,9 @@ URL_MAP = [
    ('/sitemap', webpagehandlers.SiteMapHandler),
    ('/sitemap.xml', webpagehandlers.SiteMapHandler),
    ('/robots.txt', webpagehandlers.RobotsHandler),
-   ('/addtoemaillist.do', email_handlers.EmailListActionHandler),
-   ('/confirmadditional.do', email_handlers.ConfirmNewsletterActionHandler),   
-   ('/optout.do', email_handlers.OptOutEmailActionHandler),
+   ('/addtoemaillist.do', email_handlers.AddToEmailListActionHandler),
+   ('/confirmemailaddress.do', email_handlers.ConfirmEmailAddressActionHandler),   
+   ('/optoutemailaddress.do', email_handlers.OptOutEmailActionHandler),
    ('/.*$', webpagehandlers.HomePageHandler), #home.html
 ]
 

@@ -9,6 +9,8 @@ mapping at the bottom of this module.
 
 """
 
+import logging
+
 from google.appengine.ext import db
 
 from django.utils import simplejson
@@ -21,13 +23,13 @@ import models
 import webpagehandlers
 
 
-class EmailListActionHandler(webpagehandlers.BaseRequestHandler):
+class AddToEmailListActionHandler(webpagehandlers.BaseRequestHandler):
   """
   Processes an email list addition request.
 
   """
   def post(self):
-    logging.info('EmailListHandler -- adding new email address')
+    logging.info('Adding new email address')
     email = self.request.get('youremail')
     logging.info('email == %s' % email)
     if self.request.get('yourname'):
@@ -38,8 +40,7 @@ class EmailListActionHandler(webpagehandlers.BaseRequestHandler):
     if (not email or not '@' in email):
       logging.info('email blank')
       logging.info('Sending back to contact page with alert.')
-      self.generate('contact.html', { #TODO:REPLACE WITH NEW PAGE
-        })
+      self.redirect('/') #TODO: replace with new page / alert
       return
     query = models.Email.all()
     query.filter('email =', db.Email(self.request.get('youremail')))
@@ -47,7 +48,7 @@ class EmailListActionHandler(webpagehandlers.BaseRequestHandler):
     logging.info('entry = %s ' % str(entry))
     if entry:
       logging.info('email already exists in email DB.')
-      self.redirect('/successnewsletter') #TODO: replace with new page
+      self.redirect('/emailadded') #TODO: replace with new page / alert
     else:
       if '@' in email:
         new_email = models.Email()
@@ -61,46 +62,46 @@ class EmailListActionHandler(webpagehandlers.BaseRequestHandler):
           email_name = ''
         else:
           email_name = ' ' + email_name
-        mail.send_mail(sender="info@.com", #TODO: Clean up this email
-                      to=email,
-                      bcc="alerts@.com",
-                      subject="Miracle One Wines: Confirm Email Address",
-                      body="""
-Hello%s,
-
-In order to confirm your Miracle One newsletter subscription, please click the link below:
-
-http://www.miracleonewines.com/confirmnewsletter.do?id=%s
-
-Thanks for signing up for the Miracle One Newsletter and we look forward to keeping in touch with you!
-
-Cheers,
-
-""" % (email_name, new_email.key())
-                      )
+#        mail.send_mail(sender="info@.com", #TODO: Clean up this email
+#                      to=email,
+#                      bcc="alerts@.com",
+#                      subject="Miracle One Wines: Confirm Email Address",
+#                      body="""
+#Hello%s,
+#
+#In order to confirm your Miracle One newsletter subscription, please click the link below:
+#
+#http://www..com/confirmemailaddress.do?id=%s
+#
+#Thanks for signing up for the Miracle One Newsletter and we look forward to keeping in touch with you!
+#
+#Cheers,
+#
+#""" % (email_name, new_email.key())
+#                      )
         self.redirect('/successnewsletter') #TODO: replace with new page
       else:
-        logging.info('Sending back to contact page with alert.')
-        self.generate('contact.html', { #TODO: replace with new page
-          'alert': 'Please insert a valid email address.',
-          })
+        logging.info('Sending back with alert.')
+#        self.generate('contact.html', { #TODO: replace with new page
+#          'alert': 'Please insert a valid email address.',
+#          })
 
 
-class ConfirmNewsletterActionHandler(webpagehandlers.BaseRequestHandler):
+class ConfirmEmailAddressActionHandler(webpagehandlers.BaseRequestHandler):
   """
   Processes an confirm Newsletter request.
 
   """
   def get(self):
-    logging.info('ConfirmNewsletterHandler -- Verifying email address')
+    logging.info('-- Verifying email address')
 
     entry = models.Email.get(self.request.get('id'))
     logging.info('id == %s' % self.request.get('id'))
     if not entry:
-      logging.info('Sending back to contact page with alert.')
-      self.generate('contact.html', { #TODO: Replace with the proper page.
-        'alert': 'Please try clicking the link in the confirmation email again. Or send us a support request at lane@miracleonewines.com',  #TODO: Replace with a proper message
-        })
+      logging.info('Sending back with alert.')
+#      self.generate('contact.html', { #TODO: Replace with the proper page.
+#        'alert': 'Please try clicking the link in the confirmation email again. Or send us a support request at lane@miracleonewines.com',  #TODO: Replace with a proper message
+#        })
     else:
       entry.verified = bool(True)
       logging.info('entry.verified updated to bool(True)')
@@ -114,7 +115,7 @@ class OptOutEmailActionHandler(webpagehandlers.BaseRequestHandler):
 
   """
   def post(self):
-    logging.info('OptOutEmailActionHandler -- Opting out an email address')
+    logging.info('Opting out an email address')
     logging.info('email = %s ' % self.request.get('youremail'))
 
     query = models.Email.all()
@@ -125,9 +126,6 @@ class OptOutEmailActionHandler(webpagehandlers.BaseRequestHandler):
       entry.verified = bool(False)
       logging.info('entry.verified updated to bool(False)')
       entry.put()
-      
-    self.redirect('/optout') #TODO: Replace with the proper page.
 
-
-
+    self.redirect('/optout') #TODO: Replace with the proper page. And replace so that this is an alert instead.
 
