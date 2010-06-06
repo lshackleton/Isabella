@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+            
+            <section id="articles"> <!-- A new section with the articles -->
+
+					
+
+				<!-- Article 2 start -->
+
+                <div class="line"></div>
+                
+                <article id="article2">
+                    <h2>About Isabella</h2>
+                    
+                    <div class="line"></div>
+                    
+                    <div class="articleBody clear">
+    
+                        <strong>The Product</strong><br /><br />
+                        <p>Set of 3 Vermeil gold bangles. Mixed together are Chrysopase (green stone), Turquoise, & Carnelian (orange stone). These bangles add a fun pop of color to any outfit.   Handmade in India. </p>
+                       
+                        
+                    </div>
+                </article>
+                
+				<!-- Article 2 end -->
+
+				<!-- Article 3 start -->
+
+                <div class="line"></div>
+                
+                <article id="article3">
+                    <h2>Contact</h2>
+                    
+                    <div class="line"></div>
+                    
+                    <div class="articleBody clear">
+                    	
+                        
+                        
+                        <strong>Daily Email Sign Up</strong><br /><br />
+                                               
+                        
+            <form action="/addtoemaillist.do" method="post">			
+			<p>	
+			
+			My name is <input name="yourname" value="Enter Name" type="text" size="30" onClick="this.value=''" /> and my email address is 
+			<input name="youremail" value="Enter Email Address" type="text" size="30" onClick="this.value=''" />.<br /><br />  Please send me a daily email with the deal of the day.<br /><br />
+			
+			<input class="button" type="submit" value="Submit"/>
+			</p>		
+			</form>	
+                        
+                    </div>
+                </article>
+                
+				<!-- Article 3 end -->
+
+
+            </section>
+            
+{% endblock %}
