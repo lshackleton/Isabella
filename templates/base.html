@@ -52,15 +52,32 @@
             
 {% endblock %}
 
+
+  <section id="articles"> <!-- A new section with the articles -->
+  
+   <!-- Alert start --
+                
+                <article id="article2">
+                    <h2>Alert</h2>
+                    
+                    <div class="line"></div>
+                    
+                    <div class="articleBody clear">
+                        
+                        <p>We noticed you entered some data incorrectly.  Please change [BIll to indicate proper variable].</p>
+                        
+                    </div>
+                </article>
+                
+				<!-- Alert end -->
+
+
 {% block content %}
 
 
 
             
-{% endblock %}
-
-                <div class="line"></div>
-                
+{% endblock %}                
                 <article id="article3">
                     <h2>Daily Sale</h2>
                     
@@ -73,11 +90,11 @@
                         <strong>Email Sign Up</strong><br /><br />
                                                
                         
-            <form action="/addtoemaillist.do" method="post">			
+            <form action="/addtoemaillist.do" method="post" autocomplete="on">			
 			<p>	
 			
-			My name is <input name="yourname" value="Enter Name" type="text" size="30" onClick="this.value=''" /> and my email address is 
-			<input name="youremail" value="Enter Email Address" type="text" size="30" onClick="this.value=''" />.<br /><br />  Please send me a daily email with the deal of the day.<br /><br />
+			My name is <input name="yourname" value="&nbsp;Enter Name" type="text" size="30" onClick="this.value=''" /> and my email address is 
+			<input name="youremail" value="&nbsp;Enter Email Address" type="text" size="30" onClick="this.value=''" />.<br /><br />  Please send me a daily email with the deal of the day.<br /><br />
 			
 			<input class="button" type="submit" value="Submit"/>
 			</p>		
@@ -95,12 +112,8 @@
 
            <div class="line"></div>
            
-           <p>Copyright 2010 - YourSite.com</p> <!-- Change the copyright notice -->
+           <p>Copyright 2010 - Isabella's Room</p> <!-- Change the copyright notice -->
            
-           <a href="#" class="up">Top</a>
-           <a href="/about" class="by">About</a>
-           
-
         </footer>
             
 		</section> <!-- Closing the #page section -->

@@ -2,14 +2,7 @@
 
 {% block content %}
 
-            
-            <section id="articles"> <!-- A new section with the articles -->
-
-					
-
 				<!-- Article 2 start -->
-
-                <div class="line"></div>
                 
                 <article id="article2">
                     <h2>Contact</h2>
@@ -18,7 +11,20 @@
                     
                     <div class="articleBody clear">
     
-                        <p>Isabella is a simple website to showcase boutique designers to the internet audience.  We take extreme pride in finding the best small designers and providing out customers with the best prices possible.</p>
+                        <p>We'd love to hear from you!</p>
+                        
+             <form action="/contactsubmission.do" method="post">			
+			<p>	
+			
+			Name:<br /><input name="yourname" value="Enter Name" type="text" size="30" onClick="this.value=''" /><br /><br /> 
+            Email address:<br /><input name="youremail" value="Enter Email Address" type="text" size="30" onClick="this.value=''" /><br /><br />  
+            Your Message:<br /><textarea name="yourmessage" rows="8" cols="40">
+Enter Message
+</textarea><br /><br />
+			
+			<input class="button" type="submit" value="Submit"/>
+			</p>		
+			</form>	
                        
                         
                     </div>
