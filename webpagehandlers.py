@@ -136,6 +136,16 @@ class AboutPageHandler(BaseRequestHandler):
       })
 
 
+class ErrorPageHandler(BaseRequestHandler):
+  """
+  Generates the error page.
+
+  """
+  def get(self):
+    logging.info('Visiting the error page')
+    self.generate('error.html', {
+      })
+
 class OptOutEmailHandler(BaseRequestHandler):
   """
   Generates the Opt Out page.

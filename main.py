@@ -67,6 +67,7 @@ URL_MAP = [
 # after each URL map we list the html template that is displayed
    ('/contact', webpagehandlers.ContactPageHandler), #contact.html
    ('/about', webpagehandlers.AboutPageHandler), #about.html
+   ('/error', webpagehandlers.ErrorPageHandler), #error.html
    ('/optout', webpagehandlers.OptOutEmailHandler),   
    ('/sitemap', webpagehandlers.SiteMapHandler),
    ('/sitemap.xml', webpagehandlers.SiteMapHandler),
