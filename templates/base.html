@@ -37,14 +37,14 @@
             <header> <!-- Defining the header section of the page with the appropriate tag -->
             
                 <hgroup>
-                    <h1>Isabella</h1>
+                    <h1><a href="/home">Isabella</a></h1>
                     <h3>One day, one deal.</h3>
                 </hgroup>
                                 
                 <nav class="clear"> <!-- The nav link semantically marks your main site navigation -->
                     <ul>
                         <li><a href="/about">About</a></li>
-                        <li><a href="#article3">Contact</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                   </nav>
       
@@ -54,8 +54,42 @@
 
 {% block content %}
 
+
+
             
 {% endblock %}
+
+                <div class="line"></div>
+                
+                <article id="article3">
+                    <h2>Daily Sale</h2>
+                    
+                    <div class="line"></div>
+                    
+                    <div class="articleBody clear">
+                    	
+                        
+                        
+                        <strong>Email Sign Up</strong><br /><br />
+                                               
+                        
+            <form action="/addtoemaillist.do" method="post">			
+			<p>	
+			
+			My name is <input name="yourname" value="Enter Name" type="text" size="30" onClick="this.value=''" /> and my email address is 
+			<input name="youremail" value="Enter Email Address" type="text" size="30" onClick="this.value=''" />.<br /><br />  Please send me a daily email with the deal of the day.<br /><br />
+			
+			<input class="button" type="submit" value="Submit"/>
+			</p>		
+			</form>	
+                        
+                    </div>
+                </article>
+                
+				<!-- Article 3 end -->
+
+
+            </section>
 
         <footer> <!-- Marking the footer section -->
 
