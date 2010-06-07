@@ -55,8 +55,8 @@
 
   <section id="articles"> <!-- A new section with the articles -->
   
-   <!-- Alert start --
-                
+   <!-- Alert start -->
+	{% if alert %}
                 <article id="article2">
                     <h2>Alert</h2>
                     
@@ -64,12 +64,13 @@
                     
                     <div class="articleBody clear">
                         
-                        <p>We noticed you entered some data incorrectly.  Please change [BIll to indicate proper variable].</p>
+                        <p>	{{ alert }}</p>
                         
                     </div>
                 </article>
+	{% endif %}                
+	<!-- Alert end -->
                 
-				<!-- Alert end -->
 
 
 {% block content %}

@@ -93,6 +93,7 @@ class BaseRequestHandler(webapp.RequestHandler):
     # Populate the values common to all templates
     values = {
       #'user': users.GetCurrentUser(),
+      'alert': 'testing alert',
       'debug': self.request.get('deb'),
       'current_header': template_name,
     }
